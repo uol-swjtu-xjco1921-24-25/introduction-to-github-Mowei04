@@ -115,4 +115,62 @@ else
     echo "Fail"
 fi
 
+# Test wether the program would work properly when user input right instruction
+# and win the game
+
+echo -e "\n\n~~ User Input Test ~~"
+
+echo -n "Testing valid winning movement - "
+
+./maze ValidMaze.txt < inputs/WinMove.txt > tmp
+
+if grep -q "win" tmp;
+then 
+    echo "Pass"
+else
+    echo "Fail"
+fi
+
+# Test wether the program would work properly when user input right instruction
+# and win the game
+
+echo -e "\n\n~~ User Input Test ~~"
+
+echo -n "Testing valid winning movement - "
+
+./maze ValidMaze.txt < inputs/WinMove.txt > tmp
+
+if grep -q "win" tmp;
+then 
+    echo "Pass"
+else
+    echo "Fail"
+fi
+
+# Test wether the program can report error when user hit the wall
+
+echo -n "Testing hitting wall movement - "
+
+./maze ValidMaze.txt < inputs/HitWallMove.txt > tmp
+
+if grep -q "cannot move" tmp;
+then 
+    echo "Pass"
+else
+    echo "Fail"
+fi
+
+# Test wether the program can report error when user pass through the boundary
+
+echo -n "Testing passing through boundary movement - "
+
+./maze ValidMaze.txt < inputs/PassBoundaryMove.txt > tmp
+
+if grep -q "cannot move" tmp;
+then 
+    echo "Pass"
+else
+    echo "Fail"
+fi
+
 rm -f tmp
